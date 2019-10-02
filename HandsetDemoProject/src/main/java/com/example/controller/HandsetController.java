@@ -23,7 +23,6 @@ public class HandsetController {
 		List<Handset> list = handsetService.getAllHandset();
 		for(Handset l : list) {
 			logger.info(l.getModelNumber());
-		}
-		
+		}	
 	}
 }
