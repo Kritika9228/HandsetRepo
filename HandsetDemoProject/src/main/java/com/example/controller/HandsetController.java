@@ -14,6 +14,7 @@ import com.example.service.HandsetService;
 @RestController
 public class HandsetController {
 	Logger logger = LogManager.getLogger(HandsetController.class);
+	
 	@Autowired
 	HandsetService handsetService;
 	
