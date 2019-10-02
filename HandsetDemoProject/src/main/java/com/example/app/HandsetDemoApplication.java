@@ -10,8 +10,5 @@ public class HandsetDemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HandsetDemoApplication.class, args);
 	}
-//	@Bean
-//	public RestTemplate rest() {
-//		return new RestTemplate();
-//	}
+
 }
