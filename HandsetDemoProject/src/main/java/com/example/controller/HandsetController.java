@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dao.HandsetDetailsDao;
-import com.example.model.Handset;
+import com.example.model.Sensor;
 import com.example.model.Mobile;
 import com.example.service.HandsetService;
 
@@ -21,19 +21,11 @@ import com.example.service.HandsetService;
 public class HandsetController {
 	Logger logger = LogManager.getLogger(HandsetController.class);
 	
-	@Autowired
-	HandsetService handsetService;
+//	@Autowired
+//	HandsetService handsetService;
 	@Autowired
 	HandsetDetailsDao handDetailsDao;
 	
-	@RequestMapping("/handsetList")
-	public void getMobileList(){
-		logger.info("Inside getMobileList");
-		List<Handset> list = handsetService.getAllHandset();
-		for(Handset l : list) {
-			logger.info(l.getModelNumber());
-		}	
-	}
 	@RequestMapping("/allMobile")
 	public void getAllMobile(){
 		logger.info("Inside getAllMobile");
@@ -44,12 +36,18 @@ public class HandsetController {
 	}
 	
 	@RequestMapping("/handset/{modelId}")
-	public Optional<Mobile> getMobileByName(@PathVariable("modelId") final int modelId){
+	public Mobile getMobileByName(@PathVariable("modelId") final long modelId){
 		logger.info("Inside getMobileByName");
-		//Mobile oneSet= handDetailsDao.findByModel(modelName);
+		Mobile mob = new Mobile();
+		//Mobile oneSet= handDetailsDao.findByModelName(modelName);
+		//Mobile mob= handDetailsDao.findOne(modelId);
 		Optional<Mobile> oneSet= handDetailsDao.findById(modelId);
-			logger.info(oneSet);
-			return oneSet;
+		if(oneSet.isPresent()) {
+			 mob = oneSet.get();
+			logger.info(mob.getModelName());
+		}
+			
+			return mob;
 	}
 	
 }

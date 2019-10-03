@@ -2,11 +2,11 @@ package com.example.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
-import com.example.model.Handset;
+import com.example.model.Sensor;
 
 public interface HandsetService {
-	public List<Handset> getAllHandset();
+	public List<Sensor> getAllHandset();
 	
-	public Handset getHandsetByName(String name);
+	public Sensor getHandsetByName(String name);
 
 }

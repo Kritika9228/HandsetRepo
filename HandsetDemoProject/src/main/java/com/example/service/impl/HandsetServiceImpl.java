@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.controller.HandsetController;
 import com.example.dao.HandsetDao;
-import com.example.model.Handset;
+import com.example.model.Sensor;
 import com.example.service.HandsetService;
 
 @Service
@@ -20,14 +20,14 @@ public class HandsetServiceImpl implements HandsetService{
 	@Autowired
 	 HandsetDao handsetDao;
 	@Override
-	public List<Handset> getAllHandset() {
+	public List<Sensor> getAllHandset() {
 		logger.info("Inside HandsetServiceImpl");
 		return handsetDao.getAllHandset();
 		
 	}
 
 	@Override
-	public Handset getHandsetByName(String name) {
+	public Sensor getHandsetByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
