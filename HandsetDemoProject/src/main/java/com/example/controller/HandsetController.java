@@ -28,7 +28,7 @@ public class HandsetController {
 	
 	@RequestMapping("/handsetList")
 	public void getMobileList(){
-		logger.info("Inside HandsetController");
+		logger.info("Inside getMobileList");
 		List<Handset> list = handsetService.getAllHandset();
 		for(Handset l : list) {
 			logger.info(l.getModelNumber());
