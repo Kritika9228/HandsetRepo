@@ -40,6 +40,7 @@ public class Mobile {
 	@Column(name="Mobile_width")
 	private long width;
 	//private List<Sensor> sensors;
+	
 	@Column(name="Android_version")
 	private String androidVersion;
 	
