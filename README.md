@@ -14,4 +14,6 @@ to-do
 1) JPA custom implementation with all possible scenerios
 2) Exception handling scenerios
 3) Global Logger implementations
+4) Implement all methods of Optional
+5) Stream API practice
 
