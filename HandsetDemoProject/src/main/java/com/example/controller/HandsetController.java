@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dao.HandsetDetailsDao;
-import com.example.model.Sensor;
 import com.example.model.Mobile;
 import com.example.service.HandsetService;
 
