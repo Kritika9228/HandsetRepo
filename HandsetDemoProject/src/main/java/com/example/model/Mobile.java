@@ -8,12 +8,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name="mobile")
 public class Mobile {
-	@Column(name="modelName")
+	@Column(name="Model_name")
 	private String modelName;
 	@Id
-	@Column(name="modelId")
+	@Column(name="Model_id")
 	private int modelId;
+	@Column(name="Os_name")
 	private String osName;
+	@Column(name="Price")
 	private double price;
 	public String getModelName() {
 		return modelName;
