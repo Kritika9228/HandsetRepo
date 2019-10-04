@@ -47,12 +47,15 @@ public class Mobile {
 	@Column(name="Battery_capacity")
 	private String batteryCapacity;
 	
-	
+	public Mobile() {
+	}
+	public Mobile(String desc) {
+		this.modelName=desc;
+	}
 	public String getModelName() {
 		return modelName;
 	}
-	public Mobile() {
-	}
+	
 	public void setModelName(String modelName) {
 		this.modelName = modelName;
 	}
