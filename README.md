@@ -3,10 +3,11 @@ A demo project to demonstrate
 1- Spring boot starter web
 2- Spring boot starter data jpa
 3- h2 db
+4- Optional Class method
 
 Need to know about
 1) JPA Repository in build method
-2) Option class
+2) Optional class - in progress
 3) How annotation works?
 4) Why @EntityScan is required
 
