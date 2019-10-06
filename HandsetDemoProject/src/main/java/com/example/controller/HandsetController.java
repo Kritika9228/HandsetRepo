@@ -1,6 +1,7 @@
 package com.example.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.dao.HandsetDetailsDao;
 import com.example.model.Mobile;
@@ -53,18 +55,42 @@ public class HandsetController {
 		});
 			return mob;
 	}
-	@GetMapping("/handset/{modelId}/{country}")
-	public Mobile checkMobileForCountry(@PathVariable("modelId") final long modelId,@PathVariable("country") final String country) {
-		logger.info("checkMobileForCountry");
-		Mobile mob = new Mobile();
-		Optional<Mobile> singleMob= handDetailsDao.findById(modelId);
-		singleMob.filter(m1->
-			m1.getManufacturerCountry().equalsIgnoreCase(country)
-		).ifPresent(m2->{
-			logger.info(m2.getModelName() +" handset is from "+ country);
-		});
-		mob=singleMob.orElse(new Mobile("Handset from different country"));
-		return mob;
+//	@GetMapping("/handset/{modelId}/{country}")
+//	public List<Mobile> checkMobileForCountry(@PathVariable("modelId") final long modelId,@PathVariable("country") final String country) {
+	@GetMapping("/handset/{country}")
+	public List<Mobile> checkMobileForCountry(@PathVariable("country") final String country) {	
+		logger.info("Inside checkMobileForCountry");
+		List<Mobile> list = handDetailsDao.findAll();
+		List<Mobile> resultList= new ArrayList<>();
+		for(Mobile l : list) {
+			logger.info(l.getModelId());
+			Optional<Mobile> singleMob = Optional.ofNullable(l);
+			singleMob.filter(m1->
+			m1.getManufacturerCountry().equalsIgnoreCase(country))
+			.ifPresent(m2->{
+				resultList.add(m2);
+			});
+		}
+//		Mobile mob = new Mobile();
+//		Optional<Mobile> singleMob= handDetailsDao.findById(modelId);
+//		mob=singleMob.filter(m1-> 
+//			m1.getManufacturerCountry().equalsIgnoreCase(country))
+//				.orElse(new Mobile("Handset from different country"));
+		return resultList;
+	}
+	 @GetMapping("/handset/{modelId}")
+	    public Mobile getId(@PathVariable("modelId") final long modelId) {
+		 return	handDetailsDao.findById(modelId).get();
+	    }
+	 //localhost:8080/handset/increasePriceBy?modelId=111&inc=2000
+	@GetMapping("handset/increasePriceBy")
+	public Mobile increasePrice(@RequestParam("modelId") final Integer modelId,@RequestParam("inc") final Integer inc) {
+		logger.info("Inside increasePrice");
+		Mobile requstedMobile = getId(modelId);
+		requstedMobile.setPrice(requstedMobile.getPrice()+inc);
+		return handDetailsDao.save(requstedMobile);
+		
+		
 	}
 	
 }
