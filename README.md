@@ -4,6 +4,8 @@ A demo project to demonstrate
 2- Spring boot starter data jpa
 3- h2 db
 4- Optional Class method
+5- mapping function
+https://thoughts-on-java.org/ultimate-guide-association-mappings-jpa-hibernate/
 
 Need to know about
 1) JPA Repository in build method
@@ -15,6 +17,7 @@ to-do
 1) JPA custom implementation with all possible scenerios
 2) Exception handling scenerios
 3) Global Logger implementations
-4) Implement all methods of Optional
+4) Implement all methods of Optional-done
 5) Stream API practice
+6) mapping function - done
 
