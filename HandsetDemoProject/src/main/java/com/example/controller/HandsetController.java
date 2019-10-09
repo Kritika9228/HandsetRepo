@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.dao.HandsetDetailsDao;
 import com.example.model.Mobile;
+import com.example.model.Sensor;
 
 @RestController
 public class HandsetController {
@@ -28,8 +29,13 @@ public class HandsetController {
 	public void getAllMobile(){
 		logger.info("Inside getAllMobile");
 		List<Mobile> list = handDetailsDao.findAll();
+		
 		for(Mobile l : list) {
-			logger.info(l.getModelId());
+			List<Sensor> listsen = l.getSensors();
+			logger.info("Sensors for "+l.getModelId()+ "are: ");
+			for(Sensor s:listsen) {
+				logger.info(s.getSensorName());
+			}
 		}	
 	}
 	

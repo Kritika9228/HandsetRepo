@@ -19,5 +19,5 @@ Battery_capacity VARCHAR(100)
 create table sensor(
 Sensor_id INT PRIMARY KEY,
 Sensor_name VARCHAR(255),
-Sensor_desc VARCHAR(255),
+Sensor_desc VARCHAR(255)
 );
