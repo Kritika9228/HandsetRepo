@@ -14,7 +14,7 @@ Need to know about
 4) Why @EntityScan is required
 
 to-do
-1) JPA custom implementation with all possible scenerios + adding and removing comluns in association scenerio
+1) JPA custom implementation with all possible scenerios + adding and removing comluns in association scenerio+fetch_type details analysis
 2) Exception handling scenerios
 3) Global Logger implementations
 4) Implement all methods of Optional-done
