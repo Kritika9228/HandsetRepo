@@ -2,8 +2,12 @@ package com.example.controller;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.example.dao.HandsetDetailsDao;
 import com.example.model.Mobile;
 import com.example.model.Sensor;
@@ -24,6 +29,8 @@ public class HandsetController {
 //	HandsetService handsetService;
 	@Autowired
 	HandsetDetailsDao handDetailsDao;
+//	@Autowired
+//	HandsetDao handsetDao;
 	
 	@RequestMapping("/allMobile")
 	public void getAllMobile(){
@@ -94,9 +101,36 @@ public class HandsetController {
 		logger.info("Inside increasePrice");
 		Mobile requstedMobile = getId(modelId);
 		requstedMobile.setPrice(requstedMobile.getPrice()+inc);
-		return handDetailsDao.save(requstedMobile);
-		
-		
+		return handDetailsDao.save(requstedMobile);		
 	}
-	
+	//localhost:8080/handsetByName/RealMeX
+	@GetMapping("handsetByName/{modelName}")
+	public Mobile getByModelName(@PathVariable("modelName") final String modelName) {
+		logger.info("Inside getByModelName");
+		
+		//Just to demonstrate insertion
+		/*Mobile mob = new Mobile().setAndroidVersion("Nouget").setBatteryCapacity("3200mAh").setModelId(555).setModelName("Oppo").setPrice(440000);
+		handDetailsDao.save(mob);
+		logger.info("row inserted");*/
+		
+		//Test dynamic query using criteria API
+		String[] nameArr= {"Note3","OnePlus7","Oppo","RealMeX"};
+		Set<String> names = new HashSet<>(Arrays.asList(nameArr));
+		List<Mobile> lm=handDetailsDao.getHandsetByModelName(names);
+		for(Mobile s:lm) {
+			logger.info(s.getBatteryCapacity());
+		}
+		
+		return handDetailsDao.findByModelName(modelName);
+	}
+	//localhost:8080/handsetByMemory/64GB
+	@GetMapping("/handsetByMemory/{exMemo}")
+    public List<Mobile> getByMemory(@PathVariable("exMemo") final String exMemo) {
+	 return	handDetailsDao.findByExternalMemorySize(exMemo);
+    }
+	//localhost:8080/handsetByBatteryCap/3200mAh
+	@GetMapping("/handsetByBatteryCap/{capacity}")
+    public List<Mobile> getByBatteryCap(@PathVariable("capacity") final String capacity) {
+	 return	handDetailsDao.findByBatteryCapacity(capacity);
+    }
 }

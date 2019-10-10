@@ -1,12 +1,21 @@
 package com.example.dao;
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 
-import com.example.model.Sensor;
+import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import com.example.model.Mobile;
 
-public interface HandsetDetailsDao extends JpaRepository<Mobile, Long>{
-	public Mobile findByModelName(String name);
+public interface HandsetDetailsDao extends JpaRepository<Mobile, Long>,HandsetDao{
+	@Query("SELECT m FROM Mobile m WHERE m.modelName= :modelName")
+	public Mobile findByModelName(@Param("modelName") String modelName);
+	
+	@Query("SELECT m FROM Mobile m WHERE m.externalMemorySize=?1")
+	public List<Mobile> findByExternalMemorySize(String exMemo);
+	
+	@Query("SELECT m FROM Mobile m WHERE m.batteryCapacity=?1")
+	public List<Mobile> findByBatteryCapacity(String battery);
 }

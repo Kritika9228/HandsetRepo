@@ -32,26 +32,30 @@ public class Sensor {
 	public Mobile getMobile() {
 		return mobile;
 	}
-	public void setMobile(Mobile mobile) {
+	public Sensor setMobile(Mobile mobile) {
 		this.mobile = mobile;
+		return this;
 	}
 	public long getSensorId() {
 		return sensorId;
 	}
-	public void setSensorId(long sensorId) {
+	public Sensor setSensorId(long sensorId) {
 		this.sensorId = sensorId;
+		return this;
 	}
 	public String getSensorName() {
 		return sensorName;
 	}
-	public void setSensorName(String sensorName) {
+	public Sensor setSensorName(String sensorName) {
 		this.sensorName = sensorName;
+		return this;
 	}
 	public String getSensorDesc() {
 		return sensorDesc;
 	}
-	public void setSensorDesc(String sensorDesc) {
+	public Sensor setSensorDesc(String sensorDesc) {
 		this.sensorDesc = sensorDesc;
+		return this;
 	}
 //	public long getModelId() {
 //		return modelId;
