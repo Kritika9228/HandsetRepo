@@ -21,4 +21,4 @@ to-do
 5) Stream API practice
 6) mapping function - done
 7) RestTemplate
-8) 
+8) create a layer of response object. Find out its design pattern. implement addition and removal in it
