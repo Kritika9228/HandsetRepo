@@ -31,7 +31,7 @@ public class HandsetController {
 	HandsetDetailsDao handDetailsDao;
 //	@Autowired
 //	HandsetDao handsetDao;
-	
+//	localhost:8080/api/allMobile
 	@RequestMapping("/allMobile")
 	public void getAllMobile(){
 		logger.info("Inside getAllMobile");
