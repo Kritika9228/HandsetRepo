@@ -14,7 +14,7 @@ import { Handset } from '../handset/handset';
 const httpOptions = {
 	headers : new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = "/api/handsets";
+const apiUrl = "/api/handset";
 
 @Injectable
 export class HandsetService{
@@ -49,7 +49,7 @@ export class HandsetService{
 		return this.http.post<Handset>(apiUrl,handset,httpOptions)
 			.pipe(
 				tap((handset : Handset) => console.log(`added handset, id = ${handset.model_id}`)),
-				catchError(this.handleError<Handset>('add handset'))
+				catchError(this.handleError<Handset>('addHandset'),[])
 			);
 	}
 }
