@@ -11,6 +11,7 @@ import { Handset } from '../handset/handset';
 4- https://medium.com/better-programming/error-handling-in-angular-67c308df0f07
 5- https://blog.angularindepth.com/reading-the-rxjs-6-sources-map-and-pipe-94d51fec71c2
 6- https://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html
+7- https://www.djamware.com/post/5bca67d780aca7466989441f/angular-7-tutorial-building-crud-web-application
  **/
 const httpOptions = {
 	headers : new HttpHeaders({'Content-Type': 'application/json'})
