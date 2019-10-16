@@ -32,24 +32,24 @@ export class HandsetService{
 	getHandsets() : Observable<Handset[]> {
 		return this.http.get<Handset[]>(apiUrl)
 				.pipe(
-					tap(mobiles => console.log('Fetched handset')),
-					catchError(this.handleError('getHandsets',[]))
+					tap(mobiles => console.log('Fetched handset'))
+					//catchError(this.handleError('getHandsets',[]))
 				);
 	}
 	
 	getHandset(id: number): Observable<Handset> {
   		const url = `${apiUrl}/${id}`;
  		return this.http.get<Handset>(url).pipe(
-    		tap(_ => console.log(`fetched Handset id=${id}`)),
-    		catchError(this.handleError<Handset>(`getHandset id=${id}`))
+    		tap(_ => console.log(`fetched Handset id=${id}`))
+    		//catchError(this.handleError<Handset>(`getHandset id=${id}`))
   	);
 }
 	
-	addHandset(handset) : Observable<Handset>{
+	/*addHandset(handset) : Observable<Handset>{
 		return this.http.post<Handset>(apiUrl,handset,httpOptions)
 			.pipe(
 				tap((handset : Handset) => console.log(`added handset, id = ${handset.model_id}`)),
 				catchError(this.handleError<Handset>('addHandset'),[])
 			);
-	}
+	}*/
 }

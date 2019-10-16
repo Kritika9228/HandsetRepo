@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +12,7 @@ import { HandsetAddComponent } from './handset-add/handset-add.component';
 import { HandsetDetailComponent } from './handset-detail/handset-detail.component';
 import { HandsetEditComponent } from './handset-edit/handset-edit.component';
 import { HandsetService } from './service/api.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { HandsetService } from './service/api.service';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    MatSliderModule,
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [HandsetService],
   bootstrap: [AppComponent]
