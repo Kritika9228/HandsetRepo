@@ -10,6 +10,7 @@ import { Handset } from '../handset/handset.ts';
 3- https://medium.com/better-programming/angular-dependency-injection-provider-objects-f7dc363acc6c
 4- https://medium.com/better-programming/error-handling-in-angular-67c308df0f07
 5- https://blog.angularindepth.com/reading-the-rxjs-6-sources-map-and-pipe-94d51fec71c2
+6- https://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html
  **/
 const httpOptions = {
 	headers : new HttpHeaders({'Content-Type': 'application/json'})
@@ -32,24 +33,24 @@ export class HandsetService{
 	getHandsets() : Observable<Handset[]> {
 		return this.http.get<Handset[]>(apiUrl)
 				.pipe(
-					tap(mobiles => console.log('Fetched handset')),
-					catchError(this.handleError('getProducts',[]))
+					tap(mobiles => console.log('Fetched handset'))
+					//catchError(this.handleError('getHandsets',[]))
 				);
 	}
 	
 	getHandset(id: number): Observable<Handset> {
   		const url = `${apiUrl}/${id}`;
  		return this.http.get<Handset>(url).pipe(
-    		tap(_ => console.log(`fetched Handset id=${id}`)),
-    		catchError(this.handleError<Handset>(`getHandset id=${id}`))
+    		tap(_ => console.log(`fetched Handset id=${id}`))
+    		//catchError(this.handleError<Handset>(`getHandset id=${id}`))
   	);
 }
 	
-	addHandset(handset) : Observable<Handset>{
+	/*addHandset(handset) : Observable<Handset>{
 		return this.http.post<Handset>(apiUrl,handset,httpOptions)
 			.pipe(
 				tap((handset : Handset) => console.log(`added handset, id = ${handset.model_id}`)),
-				catchError(this.handleError<Handset>('add handset'))
+				catchError(this.handleError<Handset>('addHandset'),[])
 			);
-	}
+	}*/
 }
