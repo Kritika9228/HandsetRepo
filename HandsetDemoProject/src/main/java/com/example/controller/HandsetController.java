@@ -22,6 +22,7 @@ import com.example.model.Mobile;
 import com.example.model.Sensor;
 
 @RestController
+@RequestMapping("/api")
 public class HandsetController {
 	Logger logger = LogManager.getLogger(HandsetController.class);
 	
@@ -32,7 +33,7 @@ public class HandsetController {
 //	@Autowired
 //	HandsetDao handsetDao;
 //	localhost:8080/api/allMobile
-	@RequestMapping("/allMobile")
+	@RequestMapping("/handset")
 	public void getAllMobile(){
 		logger.info("Inside getAllMobile");
 		List<Mobile> list = handDetailsDao.findAll();

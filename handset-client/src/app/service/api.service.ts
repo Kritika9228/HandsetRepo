@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap,map } from 'rxjs/operators';
-import { Handset } from '../handset/handset.ts';
+import { Handset } from '../handset/handset';
 
 /**  Constants
 1- https://blog.hackages.io/angular-http-httpclient-same-but-different-86a50bbcc450
@@ -15,7 +15,7 @@ import { Handset } from '../handset/handset.ts';
 const httpOptions = {
 	headers : new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = "/api/handsets";
+const apiUrl = "/api/handset";
 
 @Injectable
 export class HandsetService{

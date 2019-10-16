@@ -3,7 +3,7 @@ import { HandsetService } from '../service/api.service';
 @Component({
 	selector : 'app-handset',
 	templateUrl : './handset.component.html',
-	styleUrls : ['./handset.compoenent.css']
+	styleUrls : ['./handset.component.css']
 })
 export class HandsetComponent {
 	constructor(apiService : HandsetService){}
